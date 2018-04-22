@@ -7,4 +7,4 @@ describe('CountryItem', () => {
     const wrapper = renderer.create(<CountryItem />).toJSON();
     expect(wrapper).toMatchSnapshot();
   });
-})
+});

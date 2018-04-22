@@ -7,4 +7,4 @@ describe('InitView', () => {
     const wrapper = renderer.create(<InitView handlePress={() => null} />).toJSON();
     expect(wrapper).toMatchSnapshot();
   });
-})
+});

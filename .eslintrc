@@ -19,6 +19,10 @@
     "arrow-body-style": "warn"
   },
   "globals": {
-    "fetch": true
+    "fetch": true,
+    "describe":true,
+    "it":true,
+    "expect":true,
+    "jest":true
   }
 }
