@@ -5,14 +5,14 @@ import InitView from './InitView';
 class Init extends Component {
   state = {
     countries: {},
-    error: {},
+    error: '',
   }
 
   componentDidMount() {
     fetch('https://restcountries.eu/rest/v2/regionalbloc/eu?fields=name;capital;subregion;languages')
       .then(response => response.json())
       .then(response => this.setState({ countries: response }))
-      .catch(error => this.setState({ error }));
+      .catch(error => this.setState({ error: 'Could not download the countries' }));
   }
 
   handlePress = () => {
@@ -23,7 +23,7 @@ class Init extends Component {
 
   render() {
     return (
-      <InitView handlePress={this.handlePress} />
+      <InitView handlePress={this.handlePress} error={this.state.error} />
     );
   }
 }

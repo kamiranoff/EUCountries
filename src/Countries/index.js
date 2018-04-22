@@ -22,7 +22,6 @@ const Countries = props => (
   </View>
 );
 
-
 Countries.propTypes = {};
 
 export default Countries;
