@@ -42,8 +42,11 @@ const InitView = ({ handlePress, error }) => (
   <View style={styles.container}>
     <Text style={styles.countries}>EU</Text>
     <Text style={styles.countries}>COUNTRIES</Text>
-    {error &&
-    <Text style={styles.error}>Could not download data. Please make sure you are connected to the internet</Text>}
+    {error && <Text
+      style={styles.error}>
+      Could not download data. Please make sure you are connected to the internet
+    </Text>
+    }
     <TouchableOpacity style={styles.buttonContainer} onPress={handlePress} disabled={!!error}>
       <View style={[styles.button, !!error && styles.errorButton]}>
         <Text style={styles.buttonText}>START</Text>

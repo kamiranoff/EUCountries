@@ -12,7 +12,7 @@ class Init extends Component {
     fetch('https://restcountries.eu/rest/v2/regionalbloc/eu?fields=name;capital;subregion;languages')
       .then(response => response.json())
       .then(response => this.setState({ countries: response }))
-      .catch(error => this.setState({ error: 'Could not download the countries' }));
+      .catch(() => this.setState({ error: 'Could not download the countries' }));
   }
 
   handlePress = () => {
