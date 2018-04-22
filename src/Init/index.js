@@ -1,46 +1,41 @@
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Dimensions } from 'react-native';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import InitView from './InitView';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  countries: {
-    color: 'white',
-    fontSize: 40,
-    fontWeight: '700',
-    textAlign: 'center'
-  },
-  button: {
-    position: 'absolute',
-    bottom: '10%',
-    backgroundColor: 'blue',
-    padding: 20,
-    width: Dimensions.get('window').width * 0.9,
-    alignItems: 'center'
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 25,
-    fontWeight: '700',
+class Init extends Component {
+  state = {
+    countries: {},
+    error: {},
   }
-});
 
-const Init = ({ navigation }) => (
-  <View style={styles.container}>
-    <Text style={styles.countries}>EU</Text>
-    <Text style={styles.countries}>COUNTRIES</Text>
-    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Countries')}>
-      <Text style={styles.buttonText}>START</Text>
-    </TouchableOpacity>
-  </View>
-);
+  componentDidMount() {
+    fetch('https://restcountries.eu/rest/v2/regionalbloc/eu?fields=name;capital;subregion;languages')
+      .then(response => response.json())
+      .then(response => this.setState({ countries: response }))
+      .catch(error => this.setState({ error }));
+  }
+
+  handlePress = () => {
+    const { countries } = this.state;
+    const { navigation } = this.props;
+    navigation.navigate('Countries', { countries });
+  }
+
+  render() {
+    return (
+      <InitView handlePress={this.handlePress} />
+    );
+  }
+}
+
+Init.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 Init.navigationOptions = {
   header: null,
-}
+};
 
-export default Init
+export default Init;

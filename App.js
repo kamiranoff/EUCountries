@@ -1,16 +1,8 @@
 import React from 'react';
 import Navigator from './src/Navigator';
 
-export default class App extends React.Component {
+const App = () => (
+  <Navigator />
+);
 
-  componentDidMount() {
-
-  }
-
-  render() {
-    return (
-      <Navigator />
-    );
-  }
-}
-
+export default App;

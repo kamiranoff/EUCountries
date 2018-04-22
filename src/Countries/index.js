@@ -1,17 +1,27 @@
-import React, { Component } from 'react';
-import { Text, View } from "react-native";
+import React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import List from './List';
 
-class Countries extends Component {
-  render() {
-    return (
-      <View style={{ backgroundColor: 'black' }}>
-        <Text style={{ color: 'white' }}>Europe</Text>
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'black',
+    flex: 1,
+  },
+  title: {
+    color: 'white',
+    padding: 10,
+    fontSize: 20,
+    fontWeight: '900',
+  },
+});
 
-      </View>
+const Countries = props => (
+  <View style={styles.container}>
+    <Text style={styles.title}>Europe</Text>
+    <List {...props} />
+  </View>
+);
 
-    );
-  }
-}
 
 Countries.propTypes = {};
 

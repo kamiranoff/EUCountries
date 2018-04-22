@@ -10,10 +10,16 @@ const Navigator = StackNavigator({
     screen: Countries,
     navigationOptions: () => ({
       title: 'Countries',
+      headerStyle: {
+        backgroundColor: '#f1c143',
+      },
+      headerTitleStyle: {
+        color: '#000',
+      },
     }),
   },
 }, {
-  headerMode: 'screen'
+  headerMode: 'screen',
 });
 
 export default Navigator;
